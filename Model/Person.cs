@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using System.Net;
 
 namespace FluentValidation_WASM.Model
 {
@@ -29,7 +28,7 @@ namespace FluentValidation_WASM.Model
             RuleFor(p => p.Age)
                 .NotNull().WithMessage("You must enter your age")
                 .GreaterThanOrEqualTo(0).WithMessage("Age must be greater than 0")
-                .LessThan(150).WithMessage("Age cannot be greater than 150");
+                .LessThan(90).WithMessage("Age cannot be greater than 90");
 
             RuleFor(p => p.EmailAddress)
                 .NotEmpty().WithMessage("You must enter an email address")
@@ -41,8 +40,7 @@ namespace FluentValidation_WASM.Model
 
         private static async Task<bool> IsUniqueAsync(string? email)
         {
-            await Task.Delay(300);
-            return email?.ToLower() != "mail@my.com";
+            return email?.ToLower() == "Admin@gmail.com";
         }
     }
 }

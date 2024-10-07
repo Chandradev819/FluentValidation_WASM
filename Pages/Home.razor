@@ -1,72 +1,74 @@
 ﻿@page "/"
 
 <h3>FluentValidation Demo in  Blazor WASM</h3>
-
-<hr class="mb-5" />
-
-<EditForm Model="@_person" OnSubmit="@SubmitFormAsync">
+<hr />
+<EditForm Model="@_person" OnSubmit="@SubmitFormAsync" class="container mt-4">
     <FluentValidationValidator @ref="_fluentValidationValidator" Options="@(options => options.IncludeAllRuleSets())" />
-    <ValidationSummary />
+    <ValidationSummary class="text-danger" />
 
-    <p>
-        <label>First Name: </label>
-        <InputText @bind-Value="@_person.FirstName" />
-        <ValidationMessage For="@(() => _person.FirstName)" />
-    </p>
+    <div class="mb-3">
+        <label for="firstName" class="form-label">First Name:</label>
+        <InputText id="firstName" class="form-control" @bind-Value="@_person.FirstName" />
+        <ValidationMessage For="@(() => _person.FirstName)" class="text-danger" />
+    </div>
 
-    <p>
-        <label>Last Name: </label>
-        <InputText @bind-Value="@_person.LastName" />
-        <ValidationMessage For="@(() => _person.LastName)" />
-    </p>
-
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name:</label>
+        <InputText id="lastName" class="form-control" @bind-Value="@_person.LastName" />
+        <ValidationMessage For="@(() => _person.LastName)" class="text-danger" />
+    </div>
     <hr />
-    <p>
-        <label>Age: </label>
-        <InputNumber @bind-Value="@_person.Age" />
-        <ValidationMessage For="@(() => _person.Age)" />
-    </p>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age:</label>
+        <InputNumber id="age" class="form-control" @bind-Value="@_person.Age" />
+        <ValidationMessage For="@(() => _person.Age)" class="text-danger" />
+    </div>
 
-    <p>
-        <label>Email Address: </label>
-        <InputText @bind-Value="@_person.EmailAddress" />
-        <ValidationMessage For="@(() => _person.EmailAddress)" />
-    </p>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email Address:</label>
+        <InputText id="email" class="form-control" @bind-Value="@_person.EmailAddress" />
+        <ValidationMessage For="@(() => _person.EmailAddress)" class="text-danger" />
+    </div>
 
-    <p>
-        <label>Address: Line 1: </label>
-        <InputText @bind-Value="@_person.Address.Line1" />
-        <ValidationMessage For="@(() => _person.Address.Line1)" />
-    </p>
+    <div class="mb-3">
+        <label for="addressLine1" class="form-label">Address Line 1:</label>
+        <InputText id="addressLine1" class="form-control" @bind-Value="@_person.Address.Line1" />
+        <ValidationMessage For="@(() => _person.Address.Line1)" class="text-danger" />
+    </div>
 
-    <p>
-        <label>Address: Line 2: </label>
-        <InputText @bind-Value="@_person.Address.Line2" />
-    </p>
+    <div class="mb-3">
+        <label for="addressLine2" class="form-label">Address Line 2:</label>
+        <InputText id="addressLine2" class="form-control" @bind-Value="@_person.Address.Line2" />
+    </div>
 
-    <p>
-        <label>Address: Town: </label>
-        <InputText @bind-Value="@_person.Address.Town" />
-        <ValidationMessage For="@(() => _person.Address.Town)" />
-    </p>
+    <div class="mb-3">
+        <label for="town" class="form-label">Town:</label>
+        <InputText id="town" class="form-control" @bind-Value="@_person.Address.Town" />
+        <ValidationMessage For="@(() => _person.Address.Town)" class="text-danger" />
+    </div>
 
-    <p>
-        <label>Address: County: </label>
-        <InputText @bind-Value="@_person.Address.County" />
-        <ValidationMessage For="@(() => _person.Address.County)" />
-    </p>
+    <div class="mb-3">
+        <label for="county" class="form-label">County:</label>
+        <InputText id="county" class="form-control" @bind-Value="@_person.Address.County" />
+        <ValidationMessage For="@(() => _person.Address.County)" class="text-danger" />
+    </div>
 
-    <p>
-        <label>Address: Postcode: </label>
-        <InputText @bind-Value="@_person.Address.Postcode" />
-        <ValidationMessage For="@(() => _person.Address.Postcode)" />
-    </p>
+    <div class="mb-3">
+        <label for="postcode" class="form-label">Postcode:</label>
+        <InputText id="postcode" class="form-control" @bind-Value="@_person.Address.Postcode" />
+        <ValidationMessage For="@(() => _person.Address.Postcode)" class="text-danger" />
+    </div>
 
-    <button type="submit">Save</button>
-
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
 </EditForm>
+
 <br />
-<button @onclick="PartialValidate">Partial Validation</button>
+<div class="container">
+    <button class="btn btn-secondary" @onclick="PartialValidate">Partial Validation</button>
+</div>
+
 
 @code {
     private readonly Person _person = new();
